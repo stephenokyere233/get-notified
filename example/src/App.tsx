@@ -1,10 +1,9 @@
 import React from 'react'
-
-import { ExampleComponent } from 'get-notified'
+import NotifyMe from 'get-notified'
 import 'get-notified/dist/index.css'
 
 const App = () => {
-  return <ExampleComponent text="Create React Library Example 😄" />
+  return <NotifyMe message='This is a test' hasCta={false} linkText='reply' link="" position="bottom-left" />
 }
 
 export default App
