@@ -1,3 +1,3 @@
-import NotifyMe from './NotifyMe'
+import NotifyMe from './Components'
 
 export default NotifyMe

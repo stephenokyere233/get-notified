@@ -2,12 +2,28 @@ import React, { FC, useEffect, useState } from 'react'
 import styles from '../styles.module.css'
 import { INotifyMe, IPostition } from '../types'
 
-const NotifyMe: FC<INotifyMe> = ({ message, link, linkText, position }) => {
+const NotifyMe: FC<INotifyMe> = ({ message, link, linkText, position, options }) => {
   const [notificationPosition, setPosition] = useState<IPostition>({
     top: "0",
     left: "50%",
     transform: "translateX(-50%)"
   })
+  // const [message, setMessage] = useState<string>("")
+
+  const [optionStyles, setOptionStyles] = useState({
+    backgroundColor: "#ffffff",
+    color: "#000"
+  })
+  useEffect(() => {
+    if (options) {
+      setOptionStyles({
+        backgroundColor: options.style.backgroundColor,
+        color: options.style.color
+      })
+    }
+
+  }, [options])
+
 
   useEffect(() => {
     if (position === "top-center") {
@@ -53,8 +69,21 @@ const NotifyMe: FC<INotifyMe> = ({ message, link, linkText, position }) => {
 
   }, [position])
 
+
+  // const createNotification = (message: string) => {
+  //   setMessage(message)
+  //   console.log(message)
+  // }
+
+  // useEffect(() => {
+  //   createNotification("new message")
+  // }, [])
+
+
+
+
   return (
-    <div style={notificationPosition} className={styles.wrapper}>
+    <div style={{ ...notificationPosition, ...optionStyles }} className={styles.wrapper}>
       <p>{message}</p>
       <div style={{}} className={styles.ctaTab}>
         <a href={link}>
